@@ -7,7 +7,7 @@ class FetchUserUseCase {
 
   FetchUserUseCase(this._userRepository);
 
-  Future<UserEnity> execute() async {
+  Future<List<UserEnity>> execute() async {
     return await _userRepository.fetchUser();
   }
 }

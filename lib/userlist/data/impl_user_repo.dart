@@ -7,16 +7,21 @@ import 'user_repo.dart';
 
 class UserRepositoryImpl implements UserRepository {
   @override
-   final ApiServices _apiServices;
+  final ApiServices _apiServices;
 
   UserRepositoryImpl(this._apiServices);
-  Future<UserEnity> fetchUser()async {
-     try {
 
+  Future<List<UserEnity>> fetchUser() async {
+    try {
       final response = await _apiServices.get('/users');
-      final json = jsonDecode(response.body);
-      final user =UserEnity.fromJson(json);
-      return user;
+
+      // Directly decode the response body as a list
+      final List<dynamic> jsonList = jsonDecode(response.body);
+
+      // Map each item in the list to UserEnity
+      final List<UserEnity> users = jsonList.map((json) => UserEnity.fromJson(json)).toList();
+
+      return users;
     } catch (e) {
       throw Exception('Failed to fetch user: $e');
     }

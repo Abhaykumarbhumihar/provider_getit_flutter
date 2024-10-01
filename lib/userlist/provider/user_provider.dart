@@ -10,14 +10,17 @@ class UserProvider extends ChangeNotifier {
 
   UserProvider() : _fetchUserUseCase = FetchUserUseCase(locator<UserRepository>());
   
-  UserEnity? _user;
 
-  UserEnity? get user => _user;
+
   List<UserEnity> userlist=[];
 
   Future<void> fetchUser() async {
     final user = await _fetchUserUseCase.execute();
-    _user = user;
+    userlist = user;
+
+
     notifyListeners();
   }
+
+
 } 

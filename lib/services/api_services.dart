@@ -15,7 +15,7 @@ class ApiServices {
       print(apiUrl);
       print("SDFS SDF SDF SDF ");
       final response = await http.get(apiUrl);
-
+print(response.body);
       print("SDFS S4444444444444444444444444444DF SDF SDF ");
       return response;
     } catch (e) {
