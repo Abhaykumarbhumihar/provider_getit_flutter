@@ -1,8 +1,10 @@
 import 'dart:convert';
 
+import 'package:either_dart/either.dart';
 import 'package:provider_get_it/userlist/data/userEntity.dart';
 
 import '../../services/api_services.dart';
+import '../../services/failure.dart';
 import 'user_repo.dart';
 
 class UserRepositoryImpl implements UserRepository {
@@ -12,14 +14,14 @@ class UserRepositoryImpl implements UserRepository {
   UserRepositoryImpl(this._apiServices);
 
   @override
-  Future<List<UserEnity>> fetchUser() async {
+  Future<Either<Failure, List<UserEnity>>> fetchUser() async {
     try {
       final response = await _apiServices.get('/users');
       final List<dynamic> jsonList = jsonDecode(response.body);
       final List<UserEnity> users = jsonList.map((json) => UserEnity.fromJson(json)).toList();
-      return users;
+      return Right(users);
     } catch (e) {
-      throw Exception('Failed to fetch user: $e');
+      return Left(Failure('Failed to fetch users: $e'));
     }
   }
 }

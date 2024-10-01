@@ -10,24 +10,29 @@ class UserProvider extends ChangeNotifier {
 
   UserProvider() : _fetchUserUseCase = FetchUserUseCase(locator<UserRepository>());
 
-
-
-
-
-
   List<UserEnity> _userList = [];
+  String? _errorMessage;
 
   List<UserEnity> get userList => _userList;
+  String? get errorMessage => _errorMessage;
 
 
   Future<void> fetchUser() async {
-    try {
-      final List<UserEnity> users = await _fetchUserUseCase.execute();
-      _userList = users;
-      notifyListeners();
-    } catch (error) {
-      print('Error fetching users: $error');
-    }
-  }
 
+    _errorMessage = null;
+
+    final eitherResult = await _fetchUserUseCase.execute();
+
+    eitherResult.fold(
+          (failure) {
+        _errorMessage = failure.message;
+        debugPrint('Error fetching users: ${failure.message}');
+        notifyListeners();
+      },
+          (users) {
+        _userList = users;
+        notifyListeners();
+      },
+    );
+  }
 }
