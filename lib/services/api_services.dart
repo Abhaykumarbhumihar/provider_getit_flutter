@@ -12,11 +12,7 @@ class ApiServices {
     var apiUrl = Uri.parse(apiBaseUri );
 
     try {
-      print(apiUrl);
-      print("SDFS SDF SDF SDF ");
       final response = await http.get(apiUrl);
-print(response.body);
-      print("SDFS S4444444444444444444444444444DF SDF SDF ");
       return response;
     } catch (e) {
       throw Exception("Failed to make GET request: $e");
@@ -25,14 +21,10 @@ print(response.body);
 
   Future<dynamic> post(String url, Map<String, dynamic> body) async {
     var apiUrl = Uri.parse(apiBaseUri + url);
-
     try {
       var response = await http.post(apiUrl, body: body);
-
       return response;
     } catch (e) {
-      //CommonUtility.showSnackbarsuccess("Error","$e" );
-
       throw Exception("Failed to make POST request: $e");
     }
   }
@@ -42,8 +34,6 @@ print(response.body);
       final response = await http.get(Uri.parse(fullUrl));
       return response;
     } catch (e) {
-      // CommonUtility.showSnackbarValidationError("Getting Server error ${e}");
-
       throw Exception("Something goes wrong");
     }
   }
