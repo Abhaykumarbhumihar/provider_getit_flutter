@@ -3,10 +3,6 @@ import 'package:provider/provider.dart';
 import 'package:provider_get_it/userlist/provider/user_provider.dart';
 
 
-
-import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-
 class UserList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -19,14 +15,14 @@ class UserList extends StatelessWidget {
         body: Consumer<UserProvider>(
           builder: (context, userProvider, child) {
 
-            if (userProvider.userlist.isEmpty) {
+            if (userProvider.userList.isEmpty) {
               return Center(child: CircularProgressIndicator());
             }
 
             return ListView.builder(
-              itemCount: userProvider.userlist.length,
+              itemCount: userProvider.userList.length,
               itemBuilder: (context, index) {
-                final user = userProvider.userlist[index];
+                final user = userProvider.userList[index];
                 return ListTile(
                   title: Text(user.name ?? 'No Name'),
                   subtitle: Text(user.email ?? 'No Email'),

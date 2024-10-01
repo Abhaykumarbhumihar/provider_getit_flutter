@@ -9,18 +9,25 @@ class UserProvider extends ChangeNotifier {
   final FetchUserUseCase _fetchUserUseCase;
 
   UserProvider() : _fetchUserUseCase = FetchUserUseCase(locator<UserRepository>());
-  
 
 
-  List<UserEnity> userlist=[];
+
+
+
+
+  List<UserEnity> _userList = [];
+
+  List<UserEnity> get userList => _userList;
+
 
   Future<void> fetchUser() async {
-    final user = await _fetchUserUseCase.execute();
-    userlist = user;
-
-
-    notifyListeners();
+    try {
+      final List<UserEnity> users = await _fetchUserUseCase.execute();
+      _userList = users;
+      notifyListeners();
+    } catch (error) {
+      print('Error fetching users: $error');
+    }
   }
 
-
-} 
+}
