@@ -27,8 +27,19 @@ To get a local copy of the project up and running, follow these steps.
 - An IDE (like VSCode or Android Studio)
 
 
-
-
+### 📂 Project Structure
+- **services/**: Contains services that interact with external APIs or other integrations.
+- **userlist/**: Feature-specific folder related to user listing.
+  - **data/**: Responsible for data management, including models and repository implementations.
+    - **entities/**: Contains data entities, such as `userEntity.dart`.
+    - **repo_impl/**: Contains implementations of the repository interfaces.
+  - **domain/**: Contains the core business logic.
+    - **repository/**: Holds repository interfaces like `user_repo.dart`.
+    - **usecase/**: Defines application-specific logic, such as `user_usecase.dart`.
+  - **presentation/**: Handles the UI and state management.
+    - **provider/**: Contains state management classes, such as `user_provider.dart`.
+    - **ui/**: Contains UI components, such as `user_page.dart`.
+- **main.dart**: Entry point of the application.
 ### Installation
 
 1. **Clone the repository:**
