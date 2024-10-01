@@ -3,10 +3,10 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:provider_get_it/services/http_overrides.dart';
-import 'package:provider_get_it/userlist/provider/user_provider.dart';
+import 'package:provider_get_it/userlist/presentation/provider/user_provider.dart';
+import 'package:provider_get_it/userlist/presentation/ui/user_page.dart';
 
 import 'services/service_locato.dart';
-import 'userlist/ui/user_page.dart';
 
 void main() {
     setupLocator();

@@ -1,9 +1,9 @@
 import 'package:flutter/foundation.dart';
-import 'package:provider_get_it/userlist/data/userEntity.dart';
+import 'package:provider_get_it/userlist/data/entities/userEntity.dart';
 
-import '../../services/service_locato.dart';
-import '../data/user_repo.dart';
-import '../data/user_usecase.dart';
+import '../../../services/service_locato.dart';
+import '../../domain/repositery/user_repo.dart';
+import '../../domain/usecase/user_usecase.dart';
 
 class UserProvider extends ChangeNotifier {
   final FetchUserUseCase _fetchUserUseCase;

@@ -1,11 +1,11 @@
 import 'dart:convert';
 
 import 'package:either_dart/either.dart';
-import 'package:provider_get_it/userlist/data/userEntity.dart';
+import 'package:provider_get_it/userlist/data/entities/userEntity.dart';
 
-import '../../services/api_services.dart';
-import '../../services/failure.dart';
-import 'user_repo.dart';
+import '../../../services/api_services.dart';
+import '../../../services/failure.dart';
+import '../../domain/repositery/user_repo.dart';
 
 class UserRepositoryImpl implements UserRepository {
 
