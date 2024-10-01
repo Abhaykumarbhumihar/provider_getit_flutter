@@ -26,26 +26,7 @@ To get a local copy of the project up and running, follow these steps.
 - Dart SDK (v2.14.0 or higher)
 - An IDE (like VSCode or Android Studio)
 
-### 📂 Project Structure
-lib/
-├── services/
-├── userlist/
-├── data/
-├── entities/
-├── userEntity.dart
-├── repo_impl/
-├── impl_user_repo.dart
-├── domain/
-├── repository/
-├── user_repo.dart
-├── usecase/
-├── user_usecase.dart
-├── presentation/
-├── provider/
-├── user_provider.dart
-├── ui/
-├── user_page.dart
-├── main.dart
+
 
 
 ### Installation
